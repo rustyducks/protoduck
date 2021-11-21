@@ -74,7 +74,7 @@ message HMI {
   bool tirette = 2;
   bool bouton = 3;
   uint32 led = 4;
-  uint32 display = 5;
+  uint32 hmi_display = 5;
 }
 
 message ProcedureCmd {
