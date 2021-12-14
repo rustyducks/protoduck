@@ -21,6 +21,11 @@ message MotorsSpeed {
   float v3 = 3;
 }
 
+message Slip {
+  float slip_left = 1;
+  float slip_right = 2;
+}
+
 // not a speed command! Its the raw commands given to the motor drivers
 message MotorsCmd {
   float cmd1 = 1;
@@ -147,6 +152,7 @@ message Message {
     ProcedureStatus procedure_status = 14;
     HexaPos hexa_pos = 15;
     PlayerPos player_pos = 16;
+    Slip slip = 17;
   }
 }
 
