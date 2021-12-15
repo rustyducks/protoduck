@@ -91,7 +91,7 @@ message ProcedureCmd {
   }
   ArmID arm_id = 1;
   Procedure procedure = 2;
-  uint32 param = 3;
+  int32 param = 3;
 }
 
 message ProcedureStatus {
