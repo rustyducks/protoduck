@@ -82,19 +82,13 @@ message HMI {
   uint32 hmi_display = 5;
 }
 
-message ProcedureCmd {
-  enum Procedure {
+message Procedure {
+  enum Proc {
     HOME = 0;
     PUT_ON_STACK = 1;
     TURN_AND_PUT_ON_STACK = 2;
     TAKE_FROM_STACK = 3;
   }
-  ArmID arm_id = 1;
-  Procedure procedure = 2;
-  int32 param = 3;
-}
-
-message ProcedureStatus {
   enum Status{
     SUCCESS = 0;
     RUNNING = 1;
@@ -102,7 +96,10 @@ message ProcedureStatus {
     POSITION_UNREACHABLE = 3;
     UNABLE_VACUUM = 4;
   }
-  Status status = 1;
+  ArmID arm_id = 1;
+  Proc proc = 2;
+  int32 param = 3;
+  Status status = 4;
 }
 
 
@@ -148,8 +145,7 @@ message Message {
     Arm arm = 10;
     Hat hat = 11;
     HMI hmi = 12;
-    ProcedureCmd procedure_cmd = 13;
-    ProcedureStatus procedure_status = 14;
+    Procedure procedure = 13;
     HexaPos hexa_pos = 15;
     PlayerPos player_pos = 16;
     Slip slip = 17;
