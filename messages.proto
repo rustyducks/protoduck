@@ -120,6 +120,16 @@ message PlayerPos {
   Speed speed = 3;
 }
 
+message Error {
+  enum Errors {
+    STEPPER_DISABLED = 0;
+    DYNAMIXEL_ERROR = 1;
+    Z_STOP_TRIGGERED = 2;
+  }
+  Errors error = 1;
+  uint32 param = 2;
+}
+
 
 message Message {
   enum MsgType {
@@ -149,6 +159,7 @@ message Message {
     HexaPos hexa_pos = 15;
     PlayerPos player_pos = 16;
     Slip slip = 17;
+    Error error = 18;
   }
 }
 
