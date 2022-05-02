@@ -156,7 +156,7 @@ message Message {
     Hat hat = 11;
     HMI hmi = 12;
     Procedure procedure = 13;
-    HexaPos hexa_pos = 15;
+    repeated HexaPos hexa_pos = 15;
     repeated PlayerPos player_pos = 16;
     Slip slip = 17;
     Error error = 18;
