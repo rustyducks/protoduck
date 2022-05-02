@@ -114,10 +114,18 @@ message HexaPos {
   Pos pos = 2;
 }
 
+message HexaPoses {
+  repeated HexaPos hexa_poses = 1;
+}
+
 message PlayerPos {
   uint32 aruco_id = 1;
   Pos pos = 2;
   Speed speed = 3;
+}
+
+message PlayerPoses {
+  repeated PlayerPos player_poses = 1;
 }
 
 message Error {
@@ -156,8 +164,8 @@ message Message {
     Hat hat = 11;
     HMI hmi = 12;
     Procedure procedure = 13;
-    repeated HexaPos hexa_pos = 15;
-    repeated PlayerPos player_pos = 16;
+    HexaPoses hexa_poses = 15;
+    PlayerPoses player_poses = 16;
     Slip slip = 17;
     Error error = 18;
   }
