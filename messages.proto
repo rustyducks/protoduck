@@ -84,10 +84,16 @@ message HMI {
 
 message Procedure {
   enum Proc {
+    // diff
     HOME = 0;
     PUT_ON_STACK = 1;
     TURN_AND_PUT_ON_STACK = 2;
     TAKE_FROM_STACK = 3;
+
+    // holo
+    DROPPER = 4;
+    TROMPE = 5;
+    LANGUE = 6;
   }
   enum Status{
     SUCCESS = 0;
