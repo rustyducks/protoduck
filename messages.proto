@@ -45,6 +45,10 @@ message Bat {
   float voltage = 1;
 }
 
+message Resistance {
+  float value = 1;
+}
+
 
 
 // IO
@@ -174,6 +178,7 @@ message Message {
     PlayerPoses player_poses = 16;
     Slip slip = 17;
     Error error = 18;
+    Resistance resistance = 19;
   }
 }
 
