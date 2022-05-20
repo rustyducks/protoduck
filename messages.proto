@@ -105,6 +105,7 @@ message Procedure {
     FAILURE = 2;
     POSITION_UNREACHABLE = 3;
     UNABLE_VACUUM = 4;
+    RUNNING_FREE = 5;
   }
   ArmID arm_id = 1;
   Proc proc = 2;
