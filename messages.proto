@@ -93,6 +93,7 @@ message Procedure {
     PUT_ON_STACK = 1;
     TURN_AND_PUT_ON_STACK = 2;
     TAKE_FROM_STACK = 3;
+    HALF_UNSTACK = 7;
 
     // holo
     DROPPER = 4;
