@@ -18,10 +18,11 @@ message Speed {
 
 message Motors {
   enum MotorDataType {
-    MOTORS_CONS = 0;
-    MOTORS_CMD = 1;
-    MOTORS_SPEED = 2;
-    MOTORS_POS = 3;
+    MOTORS_POS_CONS = 0;
+    MOTORS_SPEED_CONS = 1;
+    MOTORS_CMD = 2;
+    MOTORS_SPEED = 3;
+    MOTORS_POS = 4;
   }
   float m1 = 1;
   float m2 = 2;
