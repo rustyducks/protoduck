@@ -15,27 +15,22 @@ message Speed {
   float vtheta = 3;
 }
 
-message MotorsSpeed {
-  float v1 = 1;
-  float v2 = 2;
-  float v3 = 3;
-}
 
-message Slip {
-  float slip_left = 1;
-  float slip_right = 2;
-}
-
-// not a speed command! Its the raw commands given to the motor drivers
-message MotorsCmd {
-  float cmd1 = 1;
-  float cmd2 = 2;
-  float cmd3 = 3;
+message Motors {
+  enum MotorDataType {
+    MOTORS_CONS = 0;
+    MOTORS_CMD = 1;
+    MOTORS_SPEED = 2;
+    MOTORS_POS = 3;
+  }
+  float m1 = 1;
+  float m2 = 2;
+  float m3 = 3;
+  MotorDataType type = 4;
 }
 
 message MotorPid {
   uint32 motor_no = 1;
-  float feedforward = 2;
   float kp = 3;
   float ki = 4;
   float kd = 5;
@@ -46,113 +41,20 @@ message Bat {
 }
 
 
-
-// IO
-
-enum ArmID{
-  ARM1 = 0;
-  ARM2 = 1;
-}
-
-
-message Arm {
-  ArmID arm_id = 1;
-  float traZ = 2;
-  float rotZ = 3;
-  float rotY = 4;
-  bool pump = 5;
-  bool valve = 6;
-  float pressure = 7;
-}
-
-
-message Hat {
-  float height = 1;
-  bool pump = 2;
-  bool valve = 3;
-  float pressure = 4;
-}
-
-
-message HMI {
-  bool color = 1;
-  bool tirette = 2;
-  bool bouton = 3;
-  uint32 led = 4;
-  uint32 hmi_display = 5;
-}
-
-message ProcedureCmd {
-  enum Procedure {
-    HOME = 0;
-    PUT_ON_STACK = 1;
-    TURN_AND_PUT_ON_STACK = 2;
-    TAKE_FROM_STACK = 3;
-  }
-  ArmID arm_id = 1;
-  Procedure procedure = 2;
-  uint32 param = 3;
-}
-
-message ProcedureStatus {
-  enum Status{
-    SUCCESS = 0;
-    RUNNING = 1;
-    FAILURE = 2;
-    POSITION_UNREACHABLE = 3;
-    UNABLE_VACUUM = 4;
-  }
-  Status status = 1;
-}
-
-
-message HexaPos {
-  enum HexaType {
-    ROCK = 0;
-    RED = 1;
-    GREEN = 2;
-    BLUE = 3;
-  }
-  HexaType type = 1;
-  Pos pos = 2;
-}
-
-message PlayerPos {
-  uint32 aruco_id = 1;
-  Pos pos = 2;
-  Speed speed = 3;
-}
-
-
 message Message {
+
   enum MsgType {
     STATUS = 0;
     COMMAND = 1;
   }
-  enum Agent {
-    DIFF = 0;
-    HOLO = 1;
-    RASPI = 2;
-    MAT = 3;
-    PC = 4;
-  }
-  Agent source = 1;
+
   MsgType msg_type = 3;
   oneof inner {
     Pos pos = 4;
     Speed speed = 5;
-    MotorsSpeed motors_speed = 6;
-    MotorsCmd motors_cmd = 7;
-    MotorPid motor_pid = 8;
-    Bat bat = 9;
-    Arm arm = 10;
-    Hat hat = 11;
-    HMI hmi = 12;
-    ProcedureCmd procedure_cmd = 13;
-    ProcedureStatus procedure_status = 14;
-    HexaPos hexa_pos = 15;
-    PlayerPos player_pos = 16;
-    Slip slip = 17;
+    Motors motors = 6;
+    MotorPid motor_pid = 9;
+    Bat bat = 10;
   }
 }
 
