@@ -4,9 +4,17 @@ package protoduck;
 // base
 
 message Pos {
+  enum PosObject {
+    POS_ROBOT_W = 0;
+    POS_CARROT_W = 1;
+    POS_CARROT_R = 2;
+    POS_TARGET_W = 3;
+    POS_TARGET_R = 4;
+  }
   float x = 1;
   float y = 2;
   float theta = 3;
+  PosObject obj = 4;
 }
 
 message Speed {
